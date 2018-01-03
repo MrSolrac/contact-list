@@ -1,0 +1,12 @@
+<h1>Edit Contact: {{contact$.firstName}} {{contact$.lastName}}</h1>
+<div *ngIf='contact$'>
+    <div>First Name: <input [(ngModel)]='contact$.firstName' type="text">
+    </div>
+    <div>Last Name: <input [(ngModel)]='contact$.lastName' type="text">  
+    </div>
+    <div>Age: <input [(ngModel)]='contact$.age' type="number">  
+    </div>
+    <br>
+    <button (click)='updateContact()'>Update</button>
+    <button (click)='cancel()'>Cancel</button>
+</div>

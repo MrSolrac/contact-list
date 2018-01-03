@@ -1,0 +1,15 @@
+<input type="text" [(ngModel)]='searchTerm' placeholder="Enter Contact">
+<button (click)="searchContacts()">Seach</button>
+<div>
+    <span *ngFor='let st of searchTypes; let i = index'>
+      <input  type="radio" 
+              name="search-type" 
+              value="st" 
+              [checked]="searchType === i" 
+              (change)="onSearchTypeChange(i)">{{st | contactSearchTypeToString}}
+    </span>
+
+    <!-- <input type="radio" name="search-type" value="first-name" [checked]="searchType === 0" (change)="onSearchTypeChange(0)" > First Name
+    <input type="radio" name="search-type" value="last-name" [checked]="searchType === 1" (change)="onSearchTypeChange(1)"> Last Name
+    <input type="radio" name="search-type" value="age" [checked]="searchType === 2" (change)="onSearchTypeChange(2)"> Age -->
+</div>

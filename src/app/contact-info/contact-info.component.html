@@ -1,0 +1,41 @@
+<h2>Contacts</h2>
+
+<cl-search-contact-info (searchResults)='onSearchResult($event)'></cl-search-contact-info>
+<hr>
+<cl-add-contact-info (newContactAdded)='onNewContactAdded($event)'></cl-add-contact-info>
+<hr>
+
+<div *ngIf='contacts && contacts.length > 0; else no_contacts'>
+    <button (click)="showDetailsToggle()">{{showDetailsBtnText}}</button>
+    <ul *ngFor='let ci of contacts'>
+        <li>
+          <button (click)='deleteContact(ci)'> x </button>
+          <button (click)='editContact(ci.id)'> Edit </button>
+          <!-- <span>[{{ci.id}}]</span> -->
+          {{ci.firstName}} {{ci.lastName}} 
+          <span *ngIf='showDetails'>, Age: {{ci.age}}, Siblings: {{ ci.siblings ? ci.siblings.length : 0}}</span>       
+          <span><a routerLink="/contact-edit/{{ci.id}}">Edit</a></span>   
+        </li>
+    </ul>
+</div>
+
+<ng-template #no_contacts>No matching contacts found!</ng-template>
+<!--
+<div *ngIf='showDetails; then templateContactDetails; else templateNoContactDetails'>
+</div>
+
+<ng-template #templateNoContactDetails>
+  <ul *ngFor='let ci of contacts'>
+    <li>
+      <span>[{{ci.id}}]</span> {{ci.firstName}} {{ci.lastName}} 
+      <span *ngIf='showDetails'>, Siblings: {{ ci.siblings ? ci.siblings.length : 0}}</span>
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #templateContactDetails>
+    <ul *ngFor='let ci of contacts'>
+        <li>{{ci.firstName}} {{ci.lastName}}, Age: {{ci.age}}, Siblings: {{ ci.siblings ? ci.siblings.length : 0}} </li>
+    </ul>
+</ng-template>
+-->
